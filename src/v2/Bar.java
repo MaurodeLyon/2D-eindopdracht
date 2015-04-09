@@ -13,7 +13,7 @@ public class Bar {
 
 	private MenuBar bar;
 	public Bar(Panel panel, Text text,Timer timer, int speed){
-		MenuBar bar = new MenuBar();
+		bar = new MenuBar();
 		
 		Menu menu = new Menu("options");
 

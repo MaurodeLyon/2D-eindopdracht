@@ -18,7 +18,7 @@ public class Frame extends JFrame{
 		
 		panel = new Panel(this);
 		
-		setContentPane(panel.getJPanel());
+		setContentPane(panel.getPanel());
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setResizable(false);

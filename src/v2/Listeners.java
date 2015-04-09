@@ -1,5 +1,6 @@
 package v2;
 
+import java.awt.Color;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
@@ -7,14 +8,13 @@ import java.awt.event.MouseWheelEvent;
 import java.awt.event.MouseWheelListener;
 import java.awt.geom.Point2D;
 
-import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
 public class Listeners{
 	private Point2D lastClickPosition;
-	private Text dragObject;
-
-	public Listeners(JPanel panel,Text text){
+	private Text dragObject; 
+	
+	public Listeners(Panel panel,Text text){
 		panel.addMouseListener(new MouseAdapter() {
 			public void mousePressed(MouseEvent e) {
 				Point2D clickPoint = e.getPoint();
@@ -22,7 +22,43 @@ public class Listeners{
 				if (text.contains(clickPoint)) {
 					dragObject = text;
 				}
+				if(SwingUtilities.isMiddleMouseButton(e)){
+					for(int i = 0 ; i < 100 ; i++){
+	        			int x = (int) (Math.random() * 4);
+	        			addParticle(x,e);
+	        			
+	        		}
+				}
 			}
+			public void addParticle(int i,MouseEvent e){
+                int dx,dy;
+				switch (i) {
+				case 0:
+					dx = (int) (Math.random() * 5);
+					dy = (int) (Math.random() * 5);
+					break;
+				case 1:
+					dx = (int) (Math.random() * -5);
+					dy = (int) (Math.random() * -5);
+					break;
+				case 2:
+					dx = (int) (Math.random() * 5);
+					dy = (int) (Math.random() * -5);
+					break;
+				case 3:
+					dx = (int) (Math.random() * -5);
+					dy = (int) (Math.random() * 5);
+					break;
+				default:
+					dx = (int) (Math.random() * 5);
+					dy = (int) (Math.random() * 5);
+					break;
+				}
+               
+                int size = (int) (Math.random()*12);
+                int life = (int) Math.random()*(120)+380;
+                panel.getParticles().add(new Particle(e.getX(),e.getY(),dx,dy,size,life,Color.blue));
+            }
 
 			public void mouseReleased(MouseEvent e) {
 				dragObject = null;
