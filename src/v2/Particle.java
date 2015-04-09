@@ -17,30 +17,28 @@ public class Particle {
 	private Point2D position;
 	private double direction;
 	private double speed = 0.25 + Math.random();
-	private float alpha;
+	private float alpha = 1;
 	private float hue = new Random().nextFloat();
 
-	public Particle(int x, int y, Color c) {
-		alpha = 1;
-		direction = Math.random() * 361; 
-		//this.color = c;
+	public Particle(int x, int y) {
+		direction = Math.random() * 360;
 		size = (int) (Math.random() * 6);
 		life = (int) Math.random() * (120) + 120;
 		target = new Point2D.Double(x, -1000);
 		position = new Point2D.Double(x, y);
 		rotation();
-		
+
 		color = Color.getHSBColor(hue, 0.9f, 1.0f);
 	}
 
 	private void rotation() {
 		Point2D difference = new Point2D.Double(
-				target.getX() - position.getX(), 
-				target.getY() + position.getY());
+				target.getX() - position.getX(), target.getY()
+						+ position.getY());
 
 		double newRotation = Math.atan2(difference.getY(), difference.getX());
 		double rotDifference = direction - newRotation;
-		
+
 		while (rotDifference > Math.PI) {
 			rotDifference -= 2 * Math.PI;
 		}
@@ -78,7 +76,8 @@ public class Particle {
 		if (alpha > 0.1) {
 			alpha -= 0.005;
 		}
-	    g2d.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, alpha));
+		g2d.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER,
+				alpha));
 		g2d.setColor(color);
 		g2d.fillOval((int) position.getX(), (int) position.getY(), size, size);
 	}

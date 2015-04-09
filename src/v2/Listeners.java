@@ -24,7 +24,7 @@ public class Listeners{
 				}
 				if (SwingUtilities.isMiddleMouseButton(e)) {
 					for (int i = 0; i < 100; i++) {
-						panel.getParticles().add(new Particle(e.getX(), e.getY(), Color.blue));
+						panel.getParticles().add(new Particle(e.getX(), e.getY()));
 					}
 				}
 			}
