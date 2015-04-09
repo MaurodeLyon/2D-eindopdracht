@@ -1,4 +1,4 @@
-package v1;
+package v2;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -9,9 +9,7 @@ import java.awt.font.FontRenderContext;
 import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
 
-
-
-public class Tekst{
+public class Text {
 	Point2D position;
 	double height = 200 ,width = 200,scale = 100;
 	Shape rect;
@@ -19,7 +17,7 @@ public class Tekst{
 	GradientPaint paint;
 	int x1,x2,rotation = 0;
 	
-	public Tekst(String tekst, Point2D position){
+	public Text(String tekst, Point2D position){
 		this.position = position;
 		this.tekst = tekst;
 	}

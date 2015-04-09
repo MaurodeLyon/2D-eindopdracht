@@ -27,6 +27,7 @@ public class Launch extends JPanel implements ActionListener{
 	private Tekst dragObject;
 	private Point2D lastClickPosition;
 	private Timer timer;
+	private int speed = 1;
 	public static void main(String[] args) {
 		JFrame frame = new JFrame("Geanimeerde tekst");
 		frame.setSize(1024, 768);
@@ -106,14 +107,24 @@ public class Launch extends JPanel implements ActionListener{
 		menu.add(item);
 		
 		MenuItem item2 = new MenuItem();
-		item2.setLabel("set gradient speed");
+		item2.setLabel("set refreshrate");
 		item2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				String box = JOptionPane.showInputDialog("set gradient speed in milliseconds");
+				String box = JOptionPane.showInputDialog("set refreshrate in milliseconds");
 				timer.setDelay(Integer.parseInt(box));
 			}
 		});
 		menu.add(item2);
+		
+		MenuItem item3 = new MenuItem();
+		item3.setLabel("set gradient speed");
+		item3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String box = JOptionPane.showInputDialog("set gradient speed in milliseconds");
+				speed = Integer.parseInt(box);
+			}
+		});
+		menu.add(item3);
 
 		bar.add(menu);
 
@@ -124,13 +135,13 @@ public class Launch extends JPanel implements ActionListener{
 		super.paintComponent(g);
 		Graphics2D g2 = (Graphics2D) g;
 		tekst.draw(g2);
-		//g2.drawLine(getWidth()/2,0,getWidth()/2,getHeight());
-		//g2.drawLine(0,getHeight()/2,getWidth(),getHeight()/2);
 	}
 	
-	public void actionPerformed(ActionEvent e) {
-		tekst.x2 = (int) (tekst.x1 + tekst.width); 	
-		tekst.x1++;
+	public void actionPerformed(ActionEvent e) {	
+		int scaler = 1;
+		if((tekst.scale/100) > 1)
+			scaler = (int) (tekst.scale/100);
+		tekst.x1 += speed * scaler;
 		repaint();
 	}
 }
