@@ -30,8 +30,7 @@ public class Tekst{
 		double width = font.getStringBounds(tekst, frc).getWidth();
 		double height = font.getStringBounds(tekst, frc).getHeight() / 1.9;
 		g.setFont(font);
-		//paint = new GradientPaint((int) position.getX(),(int) position.getY(), Color.RED,(int) (position.getX() + width),(int) position.getY(), Color.BLUE,true);
-		paint = new GradientPaint(x1,(int) position.getY(), Color.RED,x2,(int) position.getY(), Color.BLUE,true);
+		paint = new GradientPaint(x1,(int)position.getY(), Color.RED,x2,(int) position.getY(), Color.BLUE,true);
 		g.setPaint(paint);
 		g.rotate(Math.toRadians(rotation), position.getX()+ width/2, position.getY() - (height/2));
 		g.drawString(tekst, (int)position.getX(), (int)position.getY());
