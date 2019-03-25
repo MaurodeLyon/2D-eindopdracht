@@ -1,5 +1,3 @@
-package v2;
-
 import java.awt.Menu;
 import java.awt.MenuBar;
 import java.awt.MenuItem;

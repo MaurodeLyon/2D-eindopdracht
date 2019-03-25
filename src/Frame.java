@@ -1,5 +1,3 @@
-package v2;
-
 import java.awt.Dimension;
 
 import javax.swing.JFrame;
