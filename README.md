@@ -1,4 +1,4 @@
-# Java-2D-final-assignment
+# Java 2D - final assignment
 The final assignment for the module Java 2D programming.
 
 ## Background
